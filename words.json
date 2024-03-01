@@ -1,0 +1,32 @@
+{
+    "words" : [
+        {
+            "w1" : "London",
+            "w2" : "Paris"
+        },
+        {
+            "w1" : "Strawberry",
+            "w2" : "Cherry"
+        },
+        {
+            "w1" : "Singapor",
+            "w2" : "Hong Kong"
+        },
+        {
+            "w1" : "Captain America",
+            "w2" : "Iron Man"
+        },
+        {
+            "w1" : "Bubble Gum",
+            "w2" : "Lolipop"
+        },
+        {
+            "w1" : "Escalator",
+            "w2" : "Elevator"
+        },
+        {
+            "w1" : "Ice cream",
+            "w2" : "Yogurt"
+        }
+    ]
+}
