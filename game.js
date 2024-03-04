@@ -179,12 +179,42 @@ function makediv(game) {
                             lastcard.style.display = "block";
                             countname++
                         })
+                        if(countname == game.players.length-1) {
+                            gotovote(game)
+                        }
                     }
                     })
                 
             }
+
+
     })
     // return game
 
 
+}
+
+function gotovote(game) {
+    let vote = document.getElementById("vote")
+    vote.innerHTML += `<button id="votebtn" type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Go to Vote</button>`
+
+    let votebtn = document.getElementById("votebtn")
+    let votecards = document.getElementById("votecards")
+    votebtn.addEventListener('click', () => {
+        for (let i = 0; i < game.players.length; i++) {
+            // const  = game.players[i];
+            votecards.innerHTML += `<button type="button" id="votename${i}" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">${game.players[i].name}</button>`    
+        }
+        let count = 0
+        for (let j = 0; j < game.players.length; j++) {
+            // const element = game.players[j];
+            let voted = document.getElementById(`votename${j}`)
+            voted.addEventListener('click', () => {
+                console.log("hi");
+                console.log(game.players[j].name);
+                
+            })
+            
+        }
+    })
 }
