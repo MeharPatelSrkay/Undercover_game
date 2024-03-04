@@ -7,28 +7,34 @@
     <link rel="icon" href="./logo.jpg">
     <link rel="stylesheet" href="game.css">
     <script src="game.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 </head>
 <body>
-    <form>
+    <form class="mb-5">
         <label for="no_players">Enter the number of Players : </label>
-        <input name="no_players" type="number" id="no_players" min="3" max="50">
+        <input class="form-control" name="no_players" type="number" id="no_players">
         <br>
         <label for="no_undercover">Enter the number of Undercovers : </label>
-        <input name="no_undercover" type="number" id="no_undercover" min="3" max="50">
+        <input class="form-control" name="no_undercover" type="number" id="no_undercover">
         <br>
         <label for="no_mrwhite">Enter the number of Mr. White : </label>
-        <input name="no_mrwhite" type="number" id="no_mrwhite" min="3" max="50">
+        <input class="form-control" name="no_mrwhite" type="number" id="no_mrwhite">
         <br>
-            <input type="button" value="submit" onclick=passnumvalues()>
+            <input type="button" class="btn btn-outline-primary" value="submit" onclick=passnumvalues()>
     </form>
 
-    <div style="display: flex; flex-direction: column;" id="main">
+    <div class="mb-5" style="display: flex; flex-direction: column;" id="main">
 
     </div>
 
-    <!-- <script>
-        const _ = require('underscore')
-    </script> -->
+    <div id="cardbox" class="container-fluid flex flex-row">
+        
 
+    </div>
+
+    
+                
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>

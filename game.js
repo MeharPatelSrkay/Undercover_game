@@ -1,6 +1,3 @@
-// import _, { map } from 'underscore';
-// import words from './words.json';
-
     words = [
         {
             "w1" : "London",
@@ -100,43 +97,94 @@ function makediv(game) {
         // main.append(formatted)
         main.innerHTML += formatted
     }
-    main.innerHTML += `<input id="btnsub" type="submit" value="GenerateCard" />`
+    main.innerHTML += `<input id="btnsub" class="btn btn-outline-primaryx" type="submit" value="GenerateCard" />`
+    game.players = []
     document.getElementById('btnsub').addEventListener('click', () => {
-    let names = []
-    for(let i = 0 ; i < game.num_of_players; i++){
-        names.push(document.getElementById(`names${i}`).value);
+        let names = []
+        for(let i = 0 ; i < game.num_of_players; i++){
+            names.push(document.getElementById(`names${i}`).value);
 
-        console.log("loop called");
-    }
-    console.log(names);
-    let selected_word = words[parseInt(Math.random() * words.length)];
-    let un_word = (parseInt(Math.random() * 2) == 0) ? selected_word.w1 : selected_word.w2;
-    let civ_word = (un_word == selected_word.w1) ? selected_word.w2 : selected_word.w1;
-    for (let i = 0; i < game.num_of_players; i++) {
-        if(inarray(game.undercover, i)){
-            // console.log(un_word);
-            game.players = []
-            const player = {
-                "name" : names[i],
-                "role" : "undercover",
-                "word" : un_word,
-                "score" : 0
-            }
-            game.players.push(player)
+            // console.log("loop called");
         }
-        else {
-            // console.log(civ_word);
-            const player = {
-                "name" : names[i],
-                "role" : "civillian",
-                "word" : civ_word,
-                "score" : 0
+        // console.log(names);
+        let selected_word = words[parseInt(Math.random() * words.length)];
+        let un_word = (parseInt(Math.random() * 2) == 0) ? selected_word.w1 : selected_word.w2;
+        let civ_word = (un_word == selected_word.w1) ? selected_word.w2 : selected_word.w1;
+        for (let i = 0; i < game.num_of_players; i++) {
+            if(inarray(game.undercover, i)){
+                // console.log(un_word);
+                const player = {
+                    "name" : names[i],
+                    "role" : "undercover",
+                    "word" : un_word,
+                    "score" : 0
+                }
+                game.players.push(player)
             }
-            game.players.push(player)
+            else {
+                // console.log(civ_word);
+                const player = {
+                    "name" : names[i],
+                    "role" : "civillian",
+                    "word" : civ_word,
+                    "score" : 0
+                }
+                game.players.push(player)
+            }
         }
-    }
-    console.log(JSON.stringify(game, null, 5));
+        // console.log(JSON.stringify(game, null, 5));
+        let cardbox = document.getElementById("cardbox")
+        for (let j = 0; j < game.players.length; j++) {
+            // console.log(game.players[j]);
+            // cardbox.innerHTML += game.players[j].name
+            
+            formattedcard = `<div id="card${j}" class="card pt-10 text-center mb-5 border-slate-950 rounded-sm border-2 px-6 mx-6 w-1/5 h-80">
+                                <p>Pick a card</p>
+                            </div>
+                            <div id="othercard${j}" style="display : none;" class="card pt-10 text-center mb-5 border-slate-950 rounded-sm border-2 px-6 mx-6 w-1/5 h-80">
+                                <p>Picked Card</p>
+                                <button id="lastcardbutton${j}" type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Okay</button>
+                            </div>
+                            <div id="lastcard${j}" style="display : none;" class="card pt-10 text-center mb-5 border-slate-950 rounded-sm border-2 px-6 mx-6 w-1/5 h-80">
+                                
+                            </div>`
+            cardbox.innerHTML += formattedcard
+        }
+
+        // for (let l = 0; l < game.players.length; l++) {
+            // const name = game.players[l].name;
+            let flag = true
+            let countname = 0  
+            for (let k = 0; k < game.players.length; k++) {
+                    let card_id = `card${k}`
+                    let othercard_id = `othercard${k}`
+                    let lastcard_id = `lastcard${k}`
+                    let lastcardbutton = `lastcardbutton${k}`
+                    document.getElementById(card_id).addEventListener('click', () => {
+                        if(flag == true) {
+                        flag = false
+                        let card = document.getElementById(card_id)
+                        let othercard = document.getElementById(othercard_id)
+                        card.classList.add("selected")
+                        // card.innerHTML += `<p>${game.players[k].name}</p>`
+                        card.style.display = "none";
+                        othercard.style.display = "block";
+                        othercard.innerHTML += `<p>${game.players[countname].name}</p>`
+                        othercard.innerHTML += `${game.players[countname].word}`
+                        document.getElementById(lastcardbutton).addEventListener('click', () => {
+                            flag = true
+                            othercard.style.display = "none";
+                            let lastcard = document.getElementById(lastcard_id)
+                            lastcard.innerHTML += `<p>${game.players[countname].name}'s Card</p>`
+                            lastcard.style.display = "block";
+                            countname++
+                        })
+                    }
+                    })
+                
+            }
     })
     // return game
+
 
 }
