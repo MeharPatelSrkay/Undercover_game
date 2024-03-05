@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "tw-elements": "^2.0.0",
     "underscore": "^1.13.6"
   },
   "devDependencies": {

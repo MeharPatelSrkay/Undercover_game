@@ -6,3 +6,11 @@
     cursor: pointer;
 
 }
+
+button:disabled{
+    background: grey;
+}
+
+  /* .in-cardbtn{
+    width: 60%;
+  } */

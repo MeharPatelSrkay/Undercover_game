@@ -6,6 +6,7 @@
     <title>Undercover</title>
     <link rel="icon" href="./logo.jpg">
     <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="style.css">
     <script src="game.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
@@ -23,8 +24,11 @@
             <label for="no_mrwhite">Enter the number of Mr. White : </label>
             <input class="form-control" name="no_mrwhite" type="number" id="no_mrwhite">
             <br>
-            <input type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" value="submit" onclick=passnumvalues()>
+            <button id="entervalues" class="popup-button" onclick=passnumvalues()>Enter Names</button>
         </form>
+        <div id="errorbox" style = "display: none;">
+            <p>Please enter valid numbers</p>
+        </div>
         
         <div class="mb-5" style="display: flex; flex-direction: column;" id="main">
             
@@ -42,7 +46,13 @@
             
             
         </div>
-        
+        <div id="voteanswer">
+
+        </div>
+        <div id="playagaindiv">
+
+        </div>
+
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
