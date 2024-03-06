@@ -12,7 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container px-10 py-5">
+    <div class="container-fluid px-10 py-5">
 
         <form class="mb-5">
             <label for="no_players">Enter the number of Players : </label>
@@ -24,7 +24,7 @@
             <label for="no_mrwhite">Enter the number of Mr. White : </label>
             <input class="form-control" name="no_mrwhite" type="number" id="no_mrwhite">
             <br>
-            <button id="entervalues" class="popup-button" onclick=passnumvalues()>Enter Names</button>
+            <button id="entervalues" class="popup-button" onclick=passnumvalues(event)>Enter Names</button>
         </form>
         <div id="errorbox" style = "display: none;">
             <p>Please enter valid numbers</p>
@@ -34,9 +34,31 @@
             
         </div>
         
-        <div id="cardbox" class="container-fluid flex flex-row">
-            
-            
+        <div id="cardbox">
+            <div id="turn">
+                
+            </div>
+                   <!-- component -->
+            <div class="card h-44 bg-gray-100 rounded-xl flex flex-col justify-center shadow duration-300 hover:bg-white hover:shadow-xl">
+                <img src="./img/4049905-200.png" alt="img">
+                <span class="mt-0 text-sm ?leading-5 font-semibold text-center">Frozen<br>Seafoods</span>
+            </div>  
+            <div class="card h-44 bg-gray-100 rounded-xl flex flex-col justify-center shadow duration-300 hover:bg-white hover:shadow-xl">
+                <img src="./img/4049905-200.png" alt="img">
+                <span class="mt-0 text-sm ?leading-5 font-semibold text-center">Frozen<br>Seafoods</span>
+            </div>  
+            <div class="card h-44 bg-gray-100 rounded-xl flex flex-col justify-center shadow duration-300 hover:bg-white hover:shadow-xl">
+                <img src="./img/4049905-200.png" alt="img">
+                <span class="mt-0 text-sm ?leading-5 font-semibold text-center">Frozen<br>Seafoods</span>
+            </div>  
+            <div class="card h-44 bg-gray-100 rounded-xl flex flex-col justify-center shadow duration-300 hover:bg-white hover:shadow-xl">
+                <img src="./img/4049905-200.png" alt="img">
+                <span class="mt-0 text-sm ?leading-5 font-semibold text-center">Frozen<br>Seafoods</span>
+            </div>  
+            <div class="card h-44 bg-gray-100 rounded-xl flex flex-col justify-center shadow duration-300 hover:bg-white hover:shadow-xl">
+                <img src="./img/4049905-200.png" alt="img">
+                <span class="mt-0 text-sm ?leading-5 font-semibold text-center">Frozen<br>Seafoods</span>
+            </div>  
         </div>
         
         <div id="vote">

@@ -1,10 +1,20 @@
+#cardbox{
+  padding: 0 5em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4em;
+}
+
 .card{
-    transform: all 0.5s linear;
+  height: 23em;
+  width: 18em;
+  position: relative;
 }
 
 .card:hover{
     cursor: pointer;
-
 }
 
 button:disabled{
