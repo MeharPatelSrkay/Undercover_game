@@ -114,8 +114,6 @@ function makediv(game) {
                 }
             } while (count != game.num_of_mr_white);
         }
-        console.log(game.mrwhite);
-        console.log(game.undercover);
         for(let i = 0 ; i < game.num_of_players; i++){
             names.push(document.getElementById(`names${i}`).value);
         }
@@ -148,20 +146,27 @@ function makediv(game) {
                     game.players.push(player)
                 }
             }
-            console.log(JSON.stringify(game, null, 5));
         let cardbox = document.getElementById("cardbox")
         for (let j = 0; j < game.players.length; j++) {
 
-            formattedcard = `<div id="card${j}" class="card pt-10 text-center mb-5 border-slate-950 rounded-sm border-2 px-6 mx-6 w-1/5 h-80">
-                                <p>Pick a card</p>
-                            </div>
-                            <div id="othercard${j}" style="display : none;" class="card pt-10 text-center mb-5 border-slate-950 rounded-sm border-2 px-6 mx-6 w-1/5 h-80">
-                                <p>Picked Card</p>
-                                <button id="lastcardbutton${j}" class="popup-button">Okay</button>
-                            </div>
-                            <div id="lastcard${j}" style="display : none;" class="card pt-10 text-center mb-5 border-slate-950 rounded-sm border-2 px-6 mx-6 w-1/5 h-80">
-
-                            </div>`
+            formattedcard = `<div id="card${j}" class="card firstcard bg-gray-100 rounded-xl flex flex-col justify-center shadow duration-300 hover:bg-white hover:shadow-xl">
+            <img class="pickme" src="./img/pickme.png" alt="img">
+            </div>  
+            <div id="othercard${j}" style="display: none;" class="card othercard bg-gray-100 rounded-xl justify-center shadow duration-300 hover:bg-white hover:shadow-xl">
+            <div id="othername${j}" class="othername ?leading-5 text-center"></div>
+            <div class="otherimg">
+                <img src="./img/4049905-200.png" alt="img">
+            </div>
+            <div class="othertext ?leading-5 text-center">Your word is :</div>
+            <div id="otherword${j}" class="otherword ?leading-5 text-center"></div>
+            <div class="okaybtn">
+            <button id="lastcardbutton${j}" class="popup-button">OKAY</button>
+            </div>
+            </div>  
+            <div id="lastcard${j}" style="display: none;" class="card lastcard bg-gray-100 rounded-xl flex flex-col justify-center shadow duration-300 hover:bg-white hover:shadow-xl">
+            <div id="lastfirstletter${j}" class="namefirstletter"></div>
+            <div id="lastname${j}" class="namewhole mt-5"></div>
+            </div>`
             cardbox.innerHTML += formattedcard
         }
 
@@ -176,21 +181,23 @@ function makediv(game) {
                     turn.innerHTML = `${game.players[countname].name}'s Turn`
                     document.getElementById(card_id).addEventListener('click', () => {
                         if(flag == true) {
-                        flag = false
-                        let card = document.getElementById(card_id)
-                        let othercard = document.getElementById(othercard_id)
-                        card.classList.add("selected")
-                        card.style.display = "none";
-                        othercard.style.display = "block";
-                        othercard.innerHTML += `<p>${game.players[countname].name}</p>`
-                        othercard.innerHTML += `${game.players[countname].word}`
-                        document.getElementById(lastcardbutton).addEventListener('click', () => {
-                            flag = true
-                            othercard.style.display = "none";
-                            let lastcard = document.getElementById(lastcard_id)
-                            lastcard.innerHTML += `<p>${game.players[countname].name}'s Card</p>`
-                            lastcard.style.display = "block";
-                            countname++
+                            flag = false
+                            let card = document.getElementById(card_id)
+                            let othercard = document.getElementById(othercard_id)
+                            card.classList.add("selected")
+                            card.style.display = "none";
+                            othercard.style.display = "block";
+                            document.getElementById(`othername${k}`).innerHTML = `${game.players[countname].name}`
+                            document.getElementById(`otherword${k}`).innerHTML = `${game.players[countname].word}`
+                            document.getElementById(lastcardbutton).addEventListener('click', () => {
+                                flag = true
+                                othercard.style.display = "none";
+                                let lastcard = document.getElementById(lastcard_id)
+                                document.getElementById(`lastfirstletter${k}`).innerHTML = `${game.players[countname].name[0]}`
+                                document.getElementById(`lastname${k}`).innerHTML = `${game.players[countname].name}'s Card`
+                                lastcard.style.display = "block";
+                                countname++
+                                turn.innerHTML = `${game.players[countname].name}'s Turn`
                         })
                         if(countname == game.players.length-1) {
                             turn.innerHTML = ''
@@ -214,7 +221,6 @@ function gotovote(game) {
         votebtn.disabled = true
         let votecards = document.getElementById("votecards")
         for (let i = 0; i < game.players.length; i++) {
-            console.log(game.players[i].name);
             votecards.innerHTML += `<button id="votename${i}" class="popup-button">${game.players[i].name}</button>`
         }
         un_count = 0
@@ -271,11 +277,11 @@ function gotovote(game) {
                             document.getElementById("votecards").style.display = "block"
                         })
                     }
-                    else if(white_count == game.mrwhite.length){
+                    else if(white_count == game.mrwhite.length && white_count != 0){
                         voteanswer.innerHTML = "Woohoo!! You eliminated Mr.White"
                         let playagaindiv = document.getElementById("playagaindiv")
-                        playagaindiv.innerHTML = `<button id="playagain" class="popup-button">Play Again!!!</button>`
-                        votecards.style.display = "none"
+                        // playagaindiv.innerHTML = `<button id="playagain" class="popup-button">Play Again!!!</button>`
+                        // votecards.style.display = "none"
                         // document.getElementById("playagain").addEventListener('click', () => {
                         //     document.getElementById("cardbox").innerHTML = ''
                         //     document.getElementById("vote").innerHTML = ''
