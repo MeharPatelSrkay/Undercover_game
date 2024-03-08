@@ -149,10 +149,10 @@ function makediv(game) {
         let cardbox = document.getElementById("cardbox")
         for (let j = 0; j < game.players.length; j++) {
 
-            formattedcard = `<div id="card${j}" class="card firstcard bg-gray-100 rounded-xl flex flex-col justify-center shadow duration-300 hover:bg-white hover:shadow-xl">
+            formattedcard = `<div id="card${j}" class="card firstcard rounded-xl shadow ">
             <img class="pickme" src="./img/pickme.png" alt="img">
             </div>  
-            <div id="othercard${j}" style="display: none;" class="card othercard bg-gray-100 rounded-xl justify-center shadow duration-300 hover:bg-white hover:shadow-xl">
+            <div id="othercard${j}" style="display: none" class="card othercard rounded-xl shadow">
             <div id="othername${j}" class="othername ?leading-5 text-center"></div>
             <div class="otherimg">
                 <img src="./img/4049905-200.png" alt="img">
@@ -163,7 +163,7 @@ function makediv(game) {
             <button id="lastcardbutton${j}" class="popup-button">OKAY</button>
             </div>
             </div>  
-            <div id="lastcard${j}" style="display: none;" class="card lastcard bg-gray-100 rounded-xl flex flex-col justify-center shadow duration-300 hover:bg-white hover:shadow-xl">
+            <div id="lastcard${j}" style="display: none" class="card lastcard rounded-xl shadow">
             <div id="lastfirstletter${j}" class="namefirstletter"></div>
             <div id="lastname${j}" class="namewhole mt-5"></div>
             </div>`
